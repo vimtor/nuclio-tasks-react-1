@@ -1,8 +1,14 @@
 import React from 'react'
 
-function TaskItem({id, title, onClick}) {
+function TaskItem({ id, title, completed, onClick }) {
+    const handleClick = () => onClick(id)
     return (
-        <li onClick={() => onClick(id)}>{title}</li>
+        <li 
+            onClick={handleClick} 
+            style={{ backgroundColor: completed ? 'red' : 'transparent' }}
+        >
+            {title}
+        </li>
     )
 }
 

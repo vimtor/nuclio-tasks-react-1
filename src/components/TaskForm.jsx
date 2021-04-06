@@ -19,7 +19,11 @@ function TaskForm({ onSubmit }) {
         if (!title) {
             setError("Your task title cannot be empty")
         } else {
-            onSubmit({ id: generateId(), title })
+            onSubmit({ 
+                id: generateId(),
+                title,
+                completed: false
+             })
             setTitle("")
             setError("")
         }

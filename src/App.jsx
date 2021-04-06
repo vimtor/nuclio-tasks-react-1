@@ -12,7 +12,16 @@ function App() {
   }
 
   function handleTaskClick(id) {
-    setTasks(tasks.filter(task => task.id !== id))
+    const newTasks = tasks.map(task => {
+      if (task.id === id) {
+        return {
+          ...task,
+          completed: !task.completed
+        }
+      }
+      return task
+    })
+    setTasks(newTasks)
   }
 
   return (
@@ -26,6 +35,7 @@ function App() {
             key={task.id}
             id={task.id}
             title={task.title}
+            completed={task.completed}
             onClick={handleTaskClick}
           />
         ))}

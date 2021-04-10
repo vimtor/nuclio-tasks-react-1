@@ -6,10 +6,10 @@ function useLocalStorage(localStorageKey, defaultValue) {
     return stored ? JSON.parse(stored) : defaultValue;
   });
 
-  function setLocalState(newState) {
+  const setLocalState = (newState) => {
     setState(newState);
     localStorage.setItem(localStorageKey, JSON.stringify(newState));
-  }
+  };
 
   return [state, setLocalState];
 }

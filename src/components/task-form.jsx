@@ -6,15 +6,15 @@ function TaskForm({ onSubmit }) {
   const [title, setTitle] = useLocalStorage("taskTitle", "");
   const [error, setError] = useState("");
 
-  function handleInput(event) {
+  const handleInput = (event) => {
     const newText = event.target.value;
     setTitle(newText);
     if (error && newText) {
       setError("");
     }
-  }
+  };
 
-  function handleSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault();
     if (!title) {
       setError("Your task title cannot be empty");
@@ -27,7 +27,7 @@ function TaskForm({ onSubmit }) {
       setTitle("");
       setError("");
     }
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit}>

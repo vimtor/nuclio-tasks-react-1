@@ -7,36 +7,27 @@ import useLocalStorage from "./hooks/use-local-storage";
 function App() {
   const [tasks, setTasks] = useLocalStorage("storedTasks", []);
 
-  function handleSubmit(task) {
+  const createTask = (task) => {
     setTasks([...tasks, task]);
-  }
+  };
 
-  function handleTaskClick(id) {
-    const newTasks = tasks.map((task) => {
-      if (task.id === id) {
-        return {
-          ...task,
-          completed: !task.completed,
-        };
-      }
-      return task;
-    });
+  const removeTask = (id) => {
+    const newTasks = tasks.filter((task) => task.id !== id);
     setTasks(newTasks);
-  }
+  };
 
   return (
     <div>
       <h1>Todo List</h1>
-      <p>Peding tasks: {tasks.length}</p>
-      <TaskForm onSubmit={handleSubmit} />
+      <p>Pending tasks: {tasks.length}</p>
+      <TaskForm onSubmit={createTask} />
       <TaskList>
         {tasks.map((task) => (
           <TaskItem
             key={task.id}
             id={task.id}
             title={task.title}
-            completed={task.completed}
-            onClick={handleTaskClick}
+            onClick={removeTask}
           />
         ))}
       </TaskList>

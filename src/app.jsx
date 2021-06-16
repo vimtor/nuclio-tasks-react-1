@@ -19,6 +19,7 @@ function App() {
   return (
     <div>
       <h1>Todo List</h1>
+      <h2>Un titulo</h2>
       <p>Pending tasks: {tasks.length}</p>
       <TaskForm onSubmit={createTask} />
       <TaskList>
